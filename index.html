@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?= appConfig.NOMBRE ?></title>
+  
+  <!-- CSS -->
+  <style>
+    <?!= include('estilo'); ?>
+  </style>
+</head>
+<body>
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+    <div class="logo-contenedor">
+      <div class="logo">▦</div>
+      <div class="titulo-logo">
+        <h1>MaqTrack</h1>
+        <p><?= appConfig.DESCRIPCION ?></p>
+      </div>
+    </div>
+    <div class="usuario-contenedor">
+      <div class="empresa">
+        <span>⌂</span>
+        Colgate-Palmolive · Bogotá
+      </div>
+      <div class="usuario">CR</div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="contenido">
+    <!-- COLUMNA IZQUIERDA -->
+    <section class="columna-izquierda">
+      <div class="estadisticas">
+        <div class="estadistica azul">
+          <strong>42</strong>
+          <span>Máquinas</span>
+        </div>
+        <div class="estadistica rojo">
+          <strong>3</strong>
+          <span>Con daño</span>
+        </div>
+        <div class="estadistica amarillo">
+          <strong>5</strong>
+          <span>En<br>reparación</span>
+        </div>
+      </div>
+
+      <div class="boton-escanear">
+        <span class="icono-qr">⌗</span>
+        <span>Escanear QR</span>
+      </div>
+
+      <div class="boton-menu">
+        <div class="icono-menu azul-icono">◷</div>
+        <span>Historial de escaneos</span>
+        <span class="flecha">›</span>
+      </div>
+
+      <div class="boton-menu">
+        <div class="icono-menu rojo-icono">⚠</div>
+        <span>Reportar daño</span>
+        <span class="flecha">›</span>
+      </div>
+    </section>
+
+    <!-- COLUMNA DERECHA -->
+    <section class="actividad">
+      <div class="titulo-actividad">
+        <h2>Actividad reciente</h2>
+        <a href="#">Ver todo</a>
+      </div>
+
+      <!-- TARJETA DE EJEMPLO -->
+      <div class="tarjeta">
+        <div class="icono-maquina">▤</div>
+        <div class="informacion">
+          <div class="codigo">
+            MAQ-0045
+            <span class="estado estado-dano">● Con daño</span>
+          </div>
+          <h3>Envasadora Línea 2</h3>
+          <p>Fuga aceite en el sistema hidrául...</p>
+        </div>
+        <div class="tiempo">
+          <span>Hace 4 horas</span>
+          <strong>Carlos Ramirez</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer style="text-align:center; padding:10px; font-size:11px; color:#7b8794;">
+    Versión <?= appConfig.VERSION ?>
+  </footer>
+</body>
+</html>
