@@ -34,7 +34,7 @@
           </div>
           <div class="info-maquina">
             <span class="etiqueta-pequena">MÁQUINA SELECCIONADA</span>
-            <strong class="codigo-maquina-sel">MAQ-0045 · Envasadora Línea 2</strong>
+            <strong class="codigo-maquina-sel">Línea 2 / Envasadora (MAQ-0045)</strong>
           </div>
         </div>
 
@@ -48,6 +48,17 @@
             rows="6"
           ></textarea>
           <span class="contador-caracteres">0/500 caracteres</span>
+        </div>
+
+        <!-- RESPONSABLE DE NOTIFICAR -->
+        <div class="campo-grupo">
+          <label class="campo-label">Responsable de notificar el reporte *</label>
+          <input 
+            type="text" 
+            id="responsable" 
+            class="campo-input" 
+            placeholder="Nombre completo del responsable"
+          />
         </div>
 
         <!-- FOTO ADJUNTA -->
@@ -80,18 +91,6 @@
         <div class="tarjeta-detalles">
           <h3 class="titulo-detalles">Detalles del reporte</h3>
 
-          <!-- REPORTADO POR -->
-          <div class="detalle-seccion">
-            <span class="detalle-etiqueta">REPORTADO POR</span>
-            <div class="detalle-persona">
-              <div class="avatar">CR</div>
-              <div class="persona-info">
-                <strong>Carlos Ramírez</strong>
-                <span>Operario de producción</span>
-              </div>
-            </div>
-          </div>
-
           <!-- PRIORIDAD -->
           <div class="detalle-seccion">
             <span class="detalle-etiqueta">PRIORIDAD</span>
@@ -104,8 +103,14 @@
 
           <!-- ÁREA AFECTADA -->
           <div class="detalle-seccion">
-            <span class="detalle-etiqueta">ÁREA AFECTADA</span>
+            <span class="detalle-etiqueta">LÍNEA</span>
             <div class="detalle-valor">Línea de producción 2</div>
+          </div>
+
+          <!-- MÁQUINA -->
+          <div class="detalle-seccion">
+            <span class="detalle-etiqueta">MÁQUINA</span>
+            <div class="detalle-valor">Envasadora (MAQ-0045)</div>
           </div>
 
           <!-- FECHA Y HORA -->
