@@ -251,6 +251,27 @@ body {
   color: var(--texto-secundario);
 }
 
+.campo-input {
+  width: 100%;
+  border: 1.5px solid var(--borde-input);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--texto-titulo);
+  background: var(--bg-tarjeta);
+  transition: all 0.3s ease;
+}
+
+.campo-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.campo-input::placeholder {
+  color: var(--texto-secundario);
+}
+
 .contador-caracteres {
   display: block;
   text-align: right;
