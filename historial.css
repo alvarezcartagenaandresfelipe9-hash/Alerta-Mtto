@@ -1,0 +1,333 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colores modo claro */
+  --bg-principal: #f4f6f9;
+  --bg-tarjeta: #ffffff;
+  --texto-principal: #26364a;
+  --texto-secundario: #7b8794;
+  --texto-titulo: #172a43;
+  --borde-sutil: #dbe3ee;
+  --sombra-tarjeta: rgba(30, 50, 70, 0.04);
+  --sombra-hover: rgba(30, 50, 70, 0.1);
+}
+
+[data-tema="oscuro"] {
+  /* Colores modo oscuro */
+  --bg-principal: #0f172a;
+  --bg-tarjeta: #1e293b;
+  --texto-principal: #e2e8f0;
+  --texto-secundario: #94a3b8;
+  --texto-titulo: #f1f5f9;
+  --borde-sutil: #334155;
+  --sombra-tarjeta: rgba(0, 0, 0, 0.3);
+  --sombra-hover: rgba(0, 0, 0, 0.5);
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-principal);
+  color: var(--texto-principal);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---------- BARRA SUPERIOR ---------- */
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 4%;
+}
+
+.barra h1 {
+  font-size: 16px;
+  color: var(--texto-titulo);
+  flex: 1;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.boton-volver {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e8f0fb;
+  color: #2363aa;
+  font-size: 22px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.boton-volver:hover { background: #d8e5f8; }
+
+[data-tema="oscuro"] .boton-volver {
+  background: #1e3a5f;
+  color: #7db3e8;
+}
+
+[data-tema="oscuro"] .boton-volver:hover {
+  background: #2a4a6f;
+}
+
+/* BOTÓN CAMBIAR TEMA */
+.boton-tema {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-tarjeta);
+  border: 1px solid var(--borde-sutil);
+  color: var(--texto-principal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.boton-tema:hover {
+  transform: scale(1.05);
+}
+
+.icono-sol,
+.icono-luna {
+  position: absolute;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.icono-sol {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.icono-luna {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+[data-tema="oscuro"] .icono-sol {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+[data-tema="oscuro"] .icono-luna {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* ---------- CONTENEDOR ---------- */
+.historial {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px 4% 30px;
+}
+
+/* ---------- FILTROS ---------- */
+.filtros {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+
+.filtro {
+  flex-shrink: 0;
+  border: 1px solid var(--borde-sutil);
+  background: var(--bg-tarjeta);
+  color: var(--texto-secundario);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filtro:hover { 
+  background: var(--bg-principal);
+}
+
+.filtro.activo {
+  background: #2463aa;
+  border-color: #2463aa;
+  color: white;
+}
+
+/* ---------- LISTA ---------- */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  min-height: 80px;
+  padding: 10px 15px;
+  background: var(--bg-tarjeta);
+  border-radius: 13px;
+  box-shadow: 0 2px 8px var(--sombra-tarjeta);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.item:hover {
+  box-shadow: 0 4px 12px var(--sombra-hover);
+  transform: translateY(-1px);
+}
+
+.icono-maquina {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  background: #f1f5f9;
+  border-radius: 10px;
+  color: #9aa8b7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+[data-tema="oscuro"] .icono-maquina {
+  background: #334155;
+  color: #94a3b8;
+}
+
+.informacion {
+  min-width: 0;
+  flex: 1;
+}
+
+.codigo {
+  font-size: 11px;
+  color: var(--texto-secundario);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.informacion h3 {
+  font-size: 13px;
+  color: var(--texto-titulo);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+
+.informacion p {
+  font-size: 11px;
+  color: var(--texto-secundario);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+
+/* ---------- ESTADOS ---------- */
+.estado {
+  padding: 3px 7px;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: bold;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.estado-dano      { background: #fde6e6; color: #e85b5b; }
+.estado-proceso   { background: #fff2d0; color: #d99b16; }
+.estado-operativa { background: #dff4e9; color: #299566; }
+
+[data-tema="oscuro"] .estado-dano { 
+  background: #3d1f1f; 
+  color: #f87171; 
+}
+
+[data-tema="oscuro"] .estado-proceso { 
+  background: #3d3420; 
+  color: #fbbf24; 
+}
+
+[data-tema="oscuro"] .estado-operativa { 
+  background: #1f3d2c; 
+  color: #34d399; 
+}
+
+/* ---------- TIEMPO Y USUARIO ---------- */
+.tiempo {
+  width: 95px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  margin-left: 15px;
+}
+
+.tiempo span {
+  font-size: 10px;
+  color: #b0bac5;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+[data-tema="oscuro"] .tiempo span {
+  color: #64748b;
+}
+
+.tiempo strong {
+  font-size: 10px;
+  color: var(--texto-secundario);
+  font-weight: normal;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+/* ---------- SIN RESULTADOS ---------- */
+.vacio {
+  display: none;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 13px;
+  color: var(--texto-secundario);
+  transition: color 0.3s ease;
+}
+
+/* ---------- CELULAR ---------- */
+@media (max-width: 599px) {
+  .historial { padding: 5px 5% 25px; }
+
+  .item { padding: 9px 10px; min-height: 75px; }
+
+  .icono-maquina {
+    width: 36px;
+    height: 36px;
+    margin-right: 9px;
+  }
+
+  .estado { font-size: 8px; padding: 2px 6px; }
+
+  /* Se oculta fecha y usuario, igual que en el inicio */
+  .tiempo { display: none; }
+}

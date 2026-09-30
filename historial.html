@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial · MaqTrack</title>
+  <link rel="stylesheet" href="historial.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <header class="barra">
+    <a href="index.html" class="boton-volver" aria-label="Volver">‹</a>
+    <h1>Historial de escaneos</h1>
+    <button class="boton-tema" id="btnTema" aria-label="Cambiar tema">
+      <span class="icono-sol">☀</span>
+      <span class="icono-luna">☾</span>
+    </button>
+  </header>
+
+  <main class="historial">
+
+    <!-- FILTROS -->
+    <div class="filtros">
+      <button class="filtro activo" data-filtro="todos">Todos</button>
+      <button class="filtro" data-filtro="dano">Con daño</button>
+      <button class="filtro" data-filtro="proceso">En proceso</button>
+      <button class="filtro" data-filtro="operativa">Operativas</button>
+    </div>
+
+    <!-- LISTA -->
+    <div class="lista" id="lista">
+
+      <a href="ficha.html" class="item" data-estado="dano">
+        <div class="icono-maquina">▤</div>
+        <div class="informacion">
+          <div class="codigo">
+            MAQ-0045
+            <span class="estado estado-dano">● Con daño</span>
+          </div>
+          <h3>Envasadora Línea 2</h3>
+          <p>Fuga de aceite en el sistema hidráulico</p>
+        </div>
+        <div class="tiempo">
+          <span>Hace 4 horas</span>
+          <strong>Carlos Ramírez</strong>
+        </div>
+      </a>
+
+      <a href="ficha.html" class="item" data-estado="proceso">
+        <div class="icono-maquina">▤</div>
+        <div class="informacion">
+          <div class="codigo">
+            MAQ-0012
+            <span class="estado estado-proceso">● En proceso</span>
+          </div>
+          <h3>Llenadora Línea 1</h3>
+          <p>Sensor de nivel descalibrado</p>
+        </div>
+        <div class="tiempo">
+          <span>Ayer</span>
+          <strong>Laura Gómez</strong>
+        </div>
+      </a>
+
+      <a href="ficha.html" class="item" data-estado="operativa">
+        <div class="icono-maquina">▤</div>
+        <div class="informacion">
+          <div class="codigo">
+            MAQ-0031
+            <span class="estado estado-operativa">● Operativa</span>
+          </div>
+          <h3>Tapadora Línea 3</h3>
+          <p>Revisión de rutina sin novedades</p>
+        </div>
+        <div class="tiempo">
+          <span>Hace 2 días</span>
+          <strong>Andrés Mejía</strong>
+        </div>
+      </a>
+
+      <a href="ficha.html" class="item" data-estado="operativa">
+        <div class="icono-maquina">▤</div>
+        <div class="informacion">
+          <div class="codigo">
+            MAQ-0008
+            <span class="estado estado-operativa">● Operativa</span>
+          </div>
+          <h3>Mezcladora Tanque 2</h3>
+          <p>Mantenimiento preventivo completado</p>
+        </div>
+        <div class="tiempo">
+          <span>27/09/2026</span>
+          <strong>Laura Gómez</strong>
+        </div>
+      </a>
+
+      <a href="ficha.html" class="item" data-estado="proceso">
+        <div class="icono-maquina">▤</div>
+        <div class="informacion">
+          <div class="codigo">
+            MAQ-0027
+            <span class="estado estado-proceso">● En proceso</span>
+          </div>
+          <h3>Etiquetadora Línea 2</h3>
+          <p>Rodillo de arrastre desgastado</p>
+        </div>
+        <div class="tiempo">
+          <span>26/09/2026</span>
+          <strong>Carlos Ramírez</strong>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Mensaje cuando un filtro no tiene resultados -->
+    <p class="vacio" id="vacio">No hay registros con este filtro.</p>
+
+  </main>
+
+  <script>
+    // Solo interfaz: filtra las tarjetas por estado
+    var botones = document.querySelectorAll('.filtro');
+    var items = document.querySelectorAll('.item');
+    var vacio = document.getElementById('vacio');
+
+    botones.forEach(function (boton) {
+      boton.addEventListener('click', function () {
+        botones.forEach(function (b) { b.classList.remove('activo'); });
+        boton.classList.add('activo');
+
+        var filtro = boton.getAttribute('data-filtro');
+        var visibles = 0;
+
+        items.forEach(function (item) {
+          var mostrar = filtro === 'todos' || item.getAttribute('data-estado') === filtro;
+          item.style.display = mostrar ? 'flex' : 'none';
+          if (mostrar) visibles++;
+        });
+
+        vacio.style.display = visibles === 0 ? 'block' : 'none';
+      });
+    });
+
+    // Modo oscuro
+    const btnTema = document.getElementById('btnTema');
+    const html = document.documentElement;
+    
+    // Cargar tema guardado
+    const temaGuardado = localStorage.getItem('tema') || 'claro';
+    if (temaGuardado === 'oscuro') {
+      html.setAttribute('data-tema', 'oscuro');
+    }
+    
+    // Cambiar tema
+    btnTema.addEventListener('click', function() {
+      const temaActual = html.getAttribute('data-tema');
+      const nuevoTema = temaActual === 'oscuro' ? 'claro' : 'oscuro';
+      
+      html.setAttribute('data-tema', nuevoTema);
+      localStorage.setItem('tema', nuevoTema);
+    });
+  </script>
+
+</body>
+</html>
