@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha de máquina · MaqTrack</title>
+  <link rel="stylesheet" href="ficha.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <header class="barra">
+    <a href="index.html" class="boton-volver" aria-label="Volver">‹</a>
+    <h1>Ficha de máquina</h1>
+    <button class="boton-tema" id="btnTema" aria-label="Cambiar tema">
+      <span class="icono-sol">☀</span>
+      <span class="icono-luna">☾</span>
+    </button>
+  </header>
+
+  <main class="ficha">
+
+    <!-- ================= COLUMNA IZQUIERDA ================= -->
+    <section class="columna">
+
+      <!-- TARJETA PRINCIPAL -->
+      <div class="tarjeta-principal">
+
+        <div class="cabecera-maquina">
+          <div class="icono-grande">▤</div>
+          <div class="datos-maquina">
+            <span class="etiqueta-codigo">CÓDIGO</span>
+            <strong class="codigo-maquina">MAQ-0045</strong>
+            <span class="nombre-maquina">Envasadora Línea 2</span>
+          </div>
+          <span class="insignia insignia-blanca">
+            <i class="punto rojo-punto"></i>Con daño
+          </span>
+        </div>
+
+        <div class="campos">
+
+          <div class="campo">
+            <span class="campo-titulo">ESTADO ACTUAL</span>
+            <span class="insignia insignia-roja">
+              <i class="punto rojo-punto"></i>Con daño
+            </span>
+          </div>
+
+          <div class="campo">
+            <span class="campo-titulo">DAÑO REPORTADO</span>
+            <p class="campo-dano">Fuga de aceite en el sistema hidráulico</p>
+          </div>
+
+          <div class="campo">
+            <span class="campo-titulo">FECHA DEL REPORTE</span>
+            <p class="campo-valor">25/09/2026</p>
+          </div>
+
+          <div class="campo">
+            <span class="campo-titulo">REPORTADO POR</span>
+            <p class="campo-valor">Carlos Ramírez · Operario de producción</p>
+          </div>
+
+          <div class="campo">
+            <span class="campo-titulo">ESTADO DE REPARACIÓN</span>
+            <span class="insignia insignia-amarilla">
+              <i class="punto amarillo-punto"></i>En proceso
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ================= COLUMNA DERECHA ================= -->
+    <section class="columna">
+
+      <a href="reportar.html" class="boton-rojo">
+        <span>⚠</span> Reportar nuevo daño
+      </a>
+
+      <!-- INFORMACIÓN TÉCNICA -->
+      <div class="tarjeta info-tecnica">
+        <h2>Información técnica</h2>
+
+        <div class="fila">
+          <span>Área</span>
+          <strong>Línea de producción 2</strong>
+        </div>
+        <div class="fila">
+          <span>Modelo</span>
+          <strong>PACK-X2200 Pro</strong>
+        </div>
+        <div class="fila">
+          <span>Instalación</span>
+          <strong>12/03/2021</strong>
+        </div>
+        <div class="fila">
+          <span>Último mantenimiento</span>
+          <strong>01/09/2026</strong>
+        </div>
+        <div class="fila">
+          <span>Responsable técnico</span>
+          <strong>Laura Gómez</strong>
+        </div>
+      </div>
+
+      <!-- AVISO -->
+      <div class="aviso">
+        <span class="aviso-icono">⚠</span>
+        <div>
+          <strong>Máquina fuera de servicio</strong>
+          <p>Esta máquina está detenida desde el 25/09/2026. Notificar al supervisor antes de reanudar operaciones.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= HISTORIAL DE LA MÁQUINA ================= -->
+    <section class="tarjeta historial-tabla">
+      <h2>Historial de la máquina</h2>
+
+      <div class="tabla-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Movimiento</th>
+              <th>Responsable</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="col-fecha">30/09/2026</td>
+            <td><span class="estado estado-dano">● Con daño</span></td>
+            <td>Escaneo de la máquina: sigue fuera de servicio por fuga de aceite</td>
+            <td class="col-resp">Carlos Ramírez</td>
+          </tr>
+          <tr>
+            <td class="col-fecha">26/09/2026</td>
+            <td><span class="estado estado-proceso">● En proceso</span></td>
+            <td>Reparación iniciada en el sistema hidráulico</td>
+            <td class="col-resp">Laura Gómez</td>
+          </tr>
+          <tr>
+            <td class="col-fecha">25/09/2026</td>
+            <td><span class="estado estado-dano">● Con daño</span></td>
+            <td>Daño reportado: fuga de aceite en el sistema hidráulico</td>
+            <td class="col-resp">Carlos Ramírez</td>
+          </tr>
+          <tr>
+            <td class="col-fecha">01/09/2026</td>
+            <td><span class="estado estado-operativa">● Operativa</span></td>
+            <td>Mantenimiento preventivo completado</td>
+            <td class="col-resp">Laura Gómez</td>
+          </tr>
+          <tr>
+            <td class="col-fecha">01/06/2026</td>
+            <td><span class="estado estado-operativa">● Operativa</span></td>
+            <td>Mantenimiento preventivo completado</td>
+            <td class="col-resp">Laura Gómez</td>
+          </tr>
+          <tr>
+            <td class="col-fecha">01/03/2026</td>
+            <td><span class="estado estado-operativa">● Operativa</span></td>
+            <td>Mantenimiento preventivo completado</td>
+            <td class="col-resp">Laura Gómez</td>
+          </tr>
+          <tr>
+            <td class="col-fecha">01/12/2025</td>
+            <td><span class="estado estado-operativa">● Operativa</span></td>
+            <td>Mantenimiento preventivo completado</td>
+            <td class="col-resp">Laura Gómez</td>
+          </tr>
+          <tr>
+            <td class="col-fecha">12/03/2021</td>
+            <td><span class="estado estado-neutro">● Instalación</span></td>
+            <td>Máquina instalada · modelo PACK-X2200 Pro</td>
+            <td class="col-resp">—</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Modo oscuro
+    const btnTema = document.getElementById('btnTema');
+    const html = document.documentElement;
+    
+    // Cargar tema guardado
+    const temaGuardado = localStorage.getItem('tema') || 'claro';
+    if (temaGuardado === 'oscuro') {
+      html.setAttribute('data-tema', 'oscuro');
+    }
+    
+    // Cambiar tema
+    btnTema.addEventListener('click', function() {
+      const temaActual = html.getAttribute('data-tema');
+      const nuevoTema = temaActual === 'oscuro' ? 'claro' : 'oscuro';
+      
+      html.setAttribute('data-tema', nuevoTema);
+      localStorage.setItem('tema', nuevoTema);
+    });
+  </script>
+
+</body>
+</html>

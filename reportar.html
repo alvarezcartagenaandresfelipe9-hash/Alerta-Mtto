@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportar daño · MaqTrack</title>
+  <link rel="stylesheet" href="reportar.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <header class="barra">
+    <a href="ficha.html" class="boton-volver" aria-label="Volver">‹</a>
+    <h1>Reportar daño</h1>
+    <button class="boton-tema" id="btnTema" aria-label="Cambiar tema">
+      <span class="icono-sol">☀</span>
+      <span class="icono-luna">☾</span>
+    </button>
+  </header>
+
+  <main class="reportar">
+
+    <div class="contenedor-dos-columnas">
+
+      <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+      <div class="columna-formulario">
+        
+        <!-- TARJETA MÁQUINA SELECCIONADA -->
+        <div class="tarjeta-maquina-seleccionada">
+          <div class="icono-maquina">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="2"/>
+            </svg>
+          </div>
+          <div class="info-maquina">
+            <span class="etiqueta-pequena">MÁQUINA SELECCIONADA</span>
+            <strong class="codigo-maquina-sel">MAQ-0045 · Envasadora Línea 2</strong>
+          </div>
+        </div>
+
+        <!-- DESCRIPCIÓN DEL DAÑO -->
+        <div class="campo-grupo">
+          <label class="campo-label">Descripción del daño *</label>
+          <textarea 
+            id="descripcion" 
+            class="campo-textarea" 
+            placeholder="Describe el daño con el mayor detalle posible: síntomas, momento en que ocurrió, condiciones..."
+            rows="6"
+          ></textarea>
+          <span class="contador-caracteres">0/500 caracteres</span>
+        </div>
+
+        <!-- FOTO ADJUNTA -->
+        <div class="campo-grupo">
+          <label class="campo-label">Foto adjunta (opcional)</label>
+          <label class="zona-foto">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Adjuntar foto</span>
+          </label>
+        </div>
+
+        <!-- BOTÓN ENVIAR -->
+        <a href="ficha.html" class="boton-enviar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+          Enviar reporte
+        </a>
+
+      </div>
+
+      <!-- COLUMNA DERECHA: DETALLES DEL REPORTE -->
+      <div class="columna-detalles">
+        
+        <div class="tarjeta-detalles">
+          <h3 class="titulo-detalles">Detalles del reporte</h3>
+
+          <!-- REPORTADO POR -->
+          <div class="detalle-seccion">
+            <span class="detalle-etiqueta">REPORTADO POR</span>
+            <div class="detalle-persona">
+              <div class="avatar">CR</div>
+              <div class="persona-info">
+                <strong>Carlos Ramírez</strong>
+                <span>Operario de producción</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PRIORIDAD -->
+          <div class="detalle-seccion">
+            <span class="detalle-etiqueta">PRIORIDAD</span>
+            <div class="grupo-botones-prioridad">
+              <button class="btn-prioridad" data-prioridad="baja">Baja</button>
+              <button class="btn-prioridad" data-prioridad="media">Media</button>
+              <button class="btn-prioridad activo" data-prioridad="alta">Alta</button>
+            </div>
+          </div>
+
+          <!-- ÁREA AFECTADA -->
+          <div class="detalle-seccion">
+            <span class="detalle-etiqueta">ÁREA AFECTADA</span>
+            <div class="detalle-valor">Línea de producción 2</div>
+          </div>
+
+          <!-- FECHA Y HORA -->
+          <div class="detalle-seccion">
+            <span class="detalle-etiqueta">FECHA Y HORA</span>
+            <div class="detalle-valor">29/09/2026 - 14:32</div>
+          </div>
+
+          <!-- NOTA INFORMATIVA -->
+          <div class="nota-info">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <span>El reporte será enviado al supervisor de mantenimiento y quedará registrado en el historial de la máquina.</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script>
+    // Interacción de botones de prioridad
+    const botonesPrioridad = document.querySelectorAll('.btn-prioridad');
+    
+    botonesPrioridad.forEach(boton => {
+      boton.addEventListener('click', function() {
+        botonesPrioridad.forEach(b => b.classList.remove('activo'));
+        this.classList.add('activo');
+      });
+    });
+
+    // Modo oscuro
+    const btnTema = document.getElementById('btnTema');
+    const html = document.documentElement;
+    
+    // Cargar tema guardado
+    const temaGuardado = localStorage.getItem('tema') || 'claro';
+    if (temaGuardado === 'oscuro') {
+      html.setAttribute('data-tema', 'oscuro');
+    }
+    
+    // Cambiar tema
+    btnTema.addEventListener('click', function() {
+      const temaActual = html.getAttribute('data-tema');
+      const nuevoTema = temaActual === 'oscuro' ? 'claro' : 'oscuro';
+      
+      html.setAttribute('data-tema', nuevoTema);
+      localStorage.setItem('tema', nuevoTema);
+    });
+  </script>
+
+</body>
+</html>
