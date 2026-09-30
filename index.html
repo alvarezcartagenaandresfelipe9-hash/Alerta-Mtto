@@ -9,11 +9,15 @@
   <style>
     <?!= include('estilo'); ?>
   </style>
+=======
+  <title>MaqTrack</title>
+  <link rel="stylesheet" href="estilo.css">
+>>>>>>> feature/interfaz
 </head>
 <body>
 
   <!-- ENCABEZADO -->
-   <h5>mensaje de prueba</h5>
+ 
   <header class="encabezado">
     <div class="logo-contenedor">
       <div class="logo">▦</div>
@@ -40,7 +44,7 @@
     <!-- BIENVENIDA -->
     <section class="bienvenida">
       <div>
-        <h2 id="saludo">Buenos días, Carlos</h2>
+        <h2 id="saludo">Buenos días, Planta Liquidos</h2>
         <p id="fecha">Miércoles, 30 de septiembre de 2026</p>
       </div>
       <div class="datos-turno">
@@ -108,7 +112,7 @@
           <a href="ficha.html" class="alerta-item">
             <div>
               <strong>MAQ-0045</strong>
-              <span>Envasadora Línea 2</span>
+              <span>Línea 2 / Envasadora</span>
             </div>
             <em>›</em>
           </a>
@@ -116,7 +120,7 @@
           <a href="ficha.html" class="alerta-item">
             <div>
               <strong>MAQ-0019</strong>
-              <span>Banda transportadora Línea 1</span>
+              <span>Línea 1 / Banda transportadora</span>
             </div>
             <em>›</em>
           </a>
@@ -124,7 +128,7 @@
           <a href="ficha.html" class="alerta-item">
             <div>
               <strong>MAQ-0036</strong>
-              <span>Compresor central</span>
+              <span>Central / Compresor</span>
             </div>
             <em>›</em>
           </a>
@@ -146,7 +150,7 @@
               MAQ-0045
               <span class="estado estado-dano">● Con daño</span>
             </div>
-            <h3>Envasadora Línea 2</h3>
+            <h3>Línea 2 / Envasadora</h3>
             <p>Fuga de aceite en el sistema hidráulico</p>
           </div>
           <div class="tiempo">
@@ -162,7 +166,7 @@
               MAQ-0012
               <span class="estado estado-proceso">● En proceso</span>
             </div>
-            <h3>Llenadora Línea 1</h3>
+            <h3>Línea 1 / Llenadora</h3>
             <p>Sensor de nivel descalibrado</p>
           </div>
           <div class="tiempo">
@@ -178,7 +182,7 @@
               MAQ-0031
               <span class="estado estado-operativa">● Operativa</span>
             </div>
-            <h3>Tapadora Línea 3</h3>
+            <h3>Línea 3 / Tapadora</h3>
             <p>Revisión de rutina sin novedades</p>
           </div>
           <div class="tiempo">
@@ -194,7 +198,7 @@
               MAQ-0008
               <span class="estado estado-operativa">● Operativa</span>
             </div>
-            <h3>Mezcladora Tanque 2</h3>
+            <h3>Tanque 2 / Mezcladora</h3>
             <p>Mantenimiento preventivo completado</p>
           </div>
           <div class="tiempo">
@@ -210,7 +214,7 @@
               MAQ-0027
               <span class="estado estado-proceso">● En proceso</span>
             </div>
-            <h3>Etiquetadora Línea 2</h3>
+            <h3>Línea 2 / Etiquetadora</h3>
             <p>Rodillo de arrastre desgastado</p>
           </div>
           <div class="tiempo">
@@ -231,7 +235,7 @@
     var ahora = new Date();
     var hora = ahora.getHours();
     var saludo = hora < 12 ? 'Buenos días' : (hora < 19 ? 'Buenas tardes' : 'Buenas noches');
-    document.getElementById('saludo').textContent = saludo + ', Carlos';
+    document.getElementById('saludo').textContent = saludo + ', Planta Liquidos';
 
     var fecha = ahora.toLocaleDateString('es-CO', {
       weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
