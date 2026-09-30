@@ -303,6 +303,11 @@ body {
   transition: color 0.3s ease;
 }
 
+.emoji-foto {
+  font-size: 26px;
+  line-height: 1;
+}
+
 /* BOTÓN ENVIAR */
 .boton-enviar {
   width: 100%;
@@ -499,11 +504,25 @@ body {
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 899px) {
   .contenedor-dos-columnas {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  /* Los hijos del formulario pasan a ser hijos directos del contenedor,
+     así se puede reordenar el botón Enviar para que quede al final */
+  .columna-formulario {
+    display: contents;
   }
 
   .columna-detalles {
     position: static;
+    order: 1;
+  }
+
+  .boton-enviar {
+    order: 2;
   }
 }
 
