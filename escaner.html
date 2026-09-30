@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escáner QR · MaqTrack</title>
+  <link rel="stylesheet" href="escaner.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <header class="barra">
+    <a href="index.html" class="boton-redondo" aria-label="Volver">‹</a>
+    <h1>Escáner QR</h1>
+    <button class="boton-redondo boton-tema" id="btnTema" aria-label="Cambiar tema">
+      <span class="icono-sol">☀</span>
+      <span class="icono-luna">☾</span>
+    </button>
+  </header>
+
+  <main class="escaner">
+
+    <!-- VISOR DE LA CÁMARA -->
+    <section class="visor" onclick="location.href='ficha.html'" style="cursor:pointer;">
+      <div class="marco">
+        <span class="esquina arriba-izq"></span>
+        <span class="esquina arriba-der"></span>
+        <span class="esquina abajo-izq"></span>
+        <span class="esquina abajo-der"></span>
+
+        <!-- Dibujo del QR de referencia -->
+        <svg class="qr-dibujo" viewBox="0 0 100 100">
+          <rect x="5"  y="5"  width="34" height="34" rx="6" fill="none" stroke="#2a2f3b" stroke-width="7"/>
+          <rect x="15" y="15" width="14" height="14" rx="2" fill="#2a2f3b"/>
+          <rect x="61" y="5"  width="34" height="34" rx="6" fill="none" stroke="#2a2f3b" stroke-width="7"/>
+          <rect x="71" y="15" width="14" height="14" rx="2" fill="#2a2f3b"/>
+          <rect x="5"  y="61" width="34" height="34" rx="6" fill="none" stroke="#2a2f3b" stroke-width="7"/>
+          <rect x="15" y="71" width="14" height="14" rx="2" fill="#2a2f3b"/>
+          <rect x="61" y="61" width="14" height="8"  fill="#2a2f3b"/>
+          <rect x="80" y="61" width="15" height="8"  fill="#2a2f3b"/>
+          <rect x="61" y="74" width="8"  height="8"  fill="#2a2f3b"/>
+          <rect x="74" y="74" width="21" height="8"  fill="#2a2f3b"/>
+          <rect x="61" y="87" width="34" height="8"  fill="#2a2f3b"/>
+        </svg>
+
+        <div class="linea-escaneo"></div>
+      </div>
+    </section>
+
+    <!-- PANEL DE INFORMACIÓN -->
+    <section class="panel">
+      <h2>Escanea el código QR</h2>
+      <p class="descripcion">
+        Apunta la cámara al código QR pegado en la máquina para obtener su ficha de estado.
+      </p>
+
+      <div class="consejo">
+        <span class="icono-consejo rosa">●</span>
+        <span>El código QR está en la placa de identificación de la máquina</span>
+      </div>
+
+      <div class="consejo">
+        <span class="icono-consejo amarillo">●</span>
+        <span>Usa la linterna si la iluminación es baja</span>
+      </div>
+
+      <div class="consejo">
+        <span class="icono-consejo gris">◣</span>
+        <span>Mantén el dispositivo a 20-40 cm de distancia</span>
+      </div>
+
+      <button class="boton-linterna" id="btnLinterna">
+        <span>✦</span>
+        <span id="textoLinterna">Activar linterna</span>
+      </button>
+
+      <div class="estado-busqueda">
+        <span class="punto-verde"></span>
+        Buscando código QR...
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Solo interfaz: cambia el aspecto del botón de la linterna
+    var encendida = false;
+    var btn = document.getElementById('btnLinterna');
+    var texto = document.getElementById('textoLinterna');
+
+    function alternarLinterna() {
+      encendida = !encendida;
+      btn.classList.toggle('activa', encendida);
+      texto.textContent = encendida ? 'Desactivar linterna' : 'Activar linterna';
+    }
+
+    btn.addEventListener('click', alternarLinterna);
+
+    // Modo oscuro
+    const btnTema = document.getElementById('btnTema');
+    const html = document.documentElement;
+    
+    // Cargar tema guardado
+    const temaGuardado = localStorage.getItem('tema') || 'claro';
+    if (temaGuardado === 'oscuro') {
+      html.setAttribute('data-tema', 'oscuro');
+    }
+    
+    // Cambiar tema
+    btnTema.addEventListener('click', function() {
+      const temaActual = html.getAttribute('data-tema');
+      const nuevoTema = temaActual === 'oscuro' ? 'claro' : 'oscuro';
+      
+      html.setAttribute('data-tema', nuevoTema);
+      localStorage.setItem('tema', nuevoTema);
+    });
+  </script>
+
+</body>
+</html>
