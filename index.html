@@ -3,28 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>MaqTrack · Control de máquinas</title>
+  <title><?= appConfig.NOMBRE ?></title>
   
   <!-- CSS -->
   <style>
     <?!= include('estilo'); ?>
   </style>
-
-  <title>MaqTrack</title>
-  <link rel="stylesheet" href="estilo.css">
-
 </head>
 <body>
-
   <!-- ENCABEZADO -->
- 
   <header class="encabezado">
     <div class="logo-contenedor">
       <div class="logo">🏭</div>
       <div class="titulo-logo">
         <h1>MaqTrack</h1>
-        <p>Control de máquinas</p>
+        <p><?= appConfig.DESCRIPCION ?></p>
       </div>
     </div>
     <div class="usuario-contenedor">
@@ -32,14 +25,11 @@
         <span>🏢</span>
         Colgate-Palmolive · Cali
       </div>
-      <button class="boton-tema" id="btnTema" aria-label="Cambiar tema">
-        <span class="icono-sol">☀</span>
-        <span class="icono-luna">☾</span>
-      </button>
       <div class="usuario">CR</div>
     </div>
   </header>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <main class="contenido">
 
     <!-- BIENVENIDA -->
@@ -60,7 +50,7 @@
         <div class="icono-est">🏭</div>
         <div>
           <strong>42</strong>
-          <span>Máquinas en total</span>
+          <span>Máquinas</span>
         </div>
       </div>
 
@@ -84,7 +74,7 @@
         <div class="icono-est">🛠️</div>
         <div>
           <strong>5</strong>
-          <span>En reparación</span>
+          <span>En<br>reparación</span>
         </div>
       </div>
     </section>
@@ -110,159 +100,42 @@
         <div class="alertas">
           <h3>🚨 3 máquinas fuera de servicio</h3>
 
-          <a href="ficha.html" class="alerta-item">
-            <div>
-              <strong>MAQ-0045</strong>
-              <span>Línea 2 / Envasadora</span>
-            </div>
-            <em>›</em>
-          </a>
+      <div class="boton-menu">
+        <div class="icono-menu rojo-icono">⚠</div>
+        <span>Reportar daño</span>
+        <span class="flecha">›</span>
+      </div>
+    </section>
 
-          <a href="ficha.html" class="alerta-item">
-            <div>
-              <strong>MAQ-0019</strong>
-              <span>Línea 1 / Banda transportadora</span>
-            </div>
-            <em>›</em>
-          </a>
+    <!-- COLUMNA DERECHA -->
+    <section class="actividad">
+      <div class="titulo-actividad">
+        <h2>Actividad reciente</h2>
+        <a href="#">Ver todo</a>
+      </div>
 
-          <a href="ficha.html" class="alerta-item">
-            <div>
-              <strong>MAQ-0036</strong>
-              <span>Central / Compresor</span>
-            </div>
-            <em>›</em>
-          </a>
+      <!-- TARJETA DE EJEMPLO -->
+      <div class="tarjeta">
+        <div class="icono-maquina">▤</div>
+        <div class="informacion">
+          <div class="codigo">
+            MAQ-0045
+            <span class="estado estado-dano">● Con daño</span>
+          </div>
+          <h3>Envasadora Línea 2</h3>
+          <p>Fuga aceite en el sistema hidrául...</p>
         </div>
-
-      </section>
-
-      <!-- COLUMNA DERECHA -->
-      <section class="actividad">
-        <div class="titulo-actividad">
-          <h2>Actividad reciente</h2>
-          <a href="historial.html">Ver todo</a>
+        <div class="tiempo">
+          <span>Hace 4 horas</span>
+          <strong>Carlos Ramirez</strong>
         </div>
-
-        <a href="ficha.html" class="tarjeta">
-          <div class="icono-maquina">🏭</div>
-          <div class="informacion">
-            <div class="codigo">
-              MAQ-0045
-              <span class="estado estado-dano">🔴 Con daño</span>
-            </div>
-            <h3>Línea 2 / Envasadora</h3>
-            <p>Fuga de aceite en el sistema hidráulico</p>
-          </div>
-          <div class="tiempo">
-            <span>Hace 4 horas</span>
-            <strong>Carlos Ramírez</strong>
-          </div>
-        </a>
-
-        <a href="ficha.html" class="tarjeta">
-          <div class="icono-maquina">🏭</div>
-          <div class="informacion">
-            <div class="codigo">
-              MAQ-0012
-              <span class="estado estado-proceso">🟡 En proceso</span>
-            </div>
-            <h3>Línea 1 / Llenadora</h3>
-            <p>Sensor de nivel descalibrado</p>
-          </div>
-          <div class="tiempo">
-            <span>Ayer</span>
-            <strong>Laura Gómez</strong>
-          </div>
-        </a>
-
-        <a href="ficha.html" class="tarjeta">
-          <div class="icono-maquina">🏭</div>
-          <div class="informacion">
-            <div class="codigo">
-              MAQ-0031
-              <span class="estado estado-operativa">🟢 Operativa</span>
-            </div>
-            <h3>Línea 3 / Tapadora</h3>
-            <p>Revisión de rutina sin novedades</p>
-          </div>
-          <div class="tiempo">
-            <span>Hace 2 días</span>
-            <strong>Andrés Mejía</strong>
-          </div>
-        </a>
-
-        <a href="ficha.html" class="tarjeta">
-          <div class="icono-maquina">🏭</div>
-          <div class="informacion">
-            <div class="codigo">
-              MAQ-0008
-              <span class="estado estado-operativa">🟢 Operativa</span>
-            </div>
-            <h3>Tanque 2 / Mezcladora</h3>
-            <p>Mantenimiento preventivo completado</p>
-          </div>
-          <div class="tiempo">
-            <span>27/09/2026</span>
-            <strong>Laura Gómez</strong>
-          </div>
-        </a>
-
-        <a href="ficha.html" class="tarjeta">
-          <div class="icono-maquina">🏭</div>
-          <div class="informacion">
-            <div class="codigo">
-              MAQ-0027
-              <span class="estado estado-proceso">🟡 En proceso</span>
-            </div>
-            <h3>Línea 2 / Etiquetadora</h3>
-            <p>Rodillo de arrastre desgastado</p>
-          </div>
-          <div class="tiempo">
-            <span>26/09/2026</span>
-            <strong>Carlos Ramírez</strong>
-          </div>
-        </a>
-
-      </section>
-    </div>
-
+      </div>
+    </section>
   </main>
 
-  <footer class="pie">Versión 1.0</footer>
-
-  <script>
-    // Saludo y fecha según el momento actual
-    var ahora = new Date();
-    var hora = ahora.getHours();
-    var saludo = hora < 12 ? 'Buenos días' : (hora < 19 ? 'Buenas tardes' : 'Buenas noches');
-    document.getElementById('saludo').textContent = saludo + ', Planta Liquidos';
-
-    var fecha = ahora.toLocaleDateString('es-CO', {
-      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
-    });
-    document.getElementById('fecha').textContent =
-      fecha.charAt(0).toUpperCase() + fecha.slice(1);
-
-    // Modo oscuro
-    const btnTema = document.getElementById('btnTema');
-    const html = document.documentElement;
-    
-    // Cargar tema guardado
-    const temaGuardado = localStorage.getItem('tema') || 'claro';
-    if (temaGuardado === 'oscuro') {
-      html.setAttribute('data-tema', 'oscuro');
-    }
-    
-    // Cambiar tema
-    btnTema.addEventListener('click', function() {
-      const temaActual = html.getAttribute('data-tema');
-      const nuevoTema = temaActual === 'oscuro' ? 'claro' : 'oscuro';
-      
-      html.setAttribute('data-tema', nuevoTema);
-      localStorage.setItem('tema', nuevoTema);
-    });
-  </script>
-
+  <!-- PIE DE PÁGINA -->
+  <footer style="text-align:center; padding:10px; font-size:11px; color:#7b8794;">
+    Versión <?= appConfig.VERSION ?>
+  </footer>
 </body>
 </html>
