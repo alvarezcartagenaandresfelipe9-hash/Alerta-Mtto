@@ -1,6 +1,13 @@
 function doGet() {
-  return HtmlService.createTemplateFromFile('index')
-    .evaluate();
+  const template = HtmlService.createTemplateFromFile('index');
+
+  template.appConfig = {
+    NOMBRE: 'MaqTrack',
+    DESCRIPCION: 'Control de máquinas',
+    VERSION: '1.0.0'
+  };
+
+  return template.evaluate();
 }
 
 function include(nombreArchivo) {
